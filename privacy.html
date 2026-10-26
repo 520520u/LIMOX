@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad - LIMOX</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.65;
+            color: #333;
+            background: #f4f4f6;
+        }
+        .container {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 24px rgba(80, 24, 48, 0.08);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #e01478;
+        }
+        .logo {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 1rem;
+            border-radius: 18px;
+            overflow: hidden;
+        }
+        .logo img { width: 100%; height: 100%; display: block; }
+        h1 { color: #c41268; margin-bottom: 0.35rem; }
+        .updated { color: #777; font-size: 0.9rem; }
+        h2 {
+            color: #333;
+            margin: 1.75rem 0 0.75rem;
+            padding-bottom: 0.35rem;
+            border-bottom: 1px solid #eee;
+            font-size: 1.15rem;
+        }
+        p, li { margin-bottom: 0.85rem; }
+        ul { margin-left: 1.4rem; }
+        .highlight {
+            background: #fdf2f7;
+            border-left: 4px solid #e01478;
+            padding: 1rem 1.1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            background: #e01478;
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.35rem;
+            border-radius: 999px;
+            font-weight: 600;
+        }
+        a { color: #c41268; }
+        .language-selector { text-align: center; margin-bottom: 1.25rem; }
+        .lang-btn {
+            background: white;
+            border: 2px solid #e01478;
+            color: #c41268;
+            padding: 0.35rem 0.8rem;
+            border-radius: 999px;
+            margin: 0 0.2rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .lang-btn.active, .lang-btn:hover { background: #e01478; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="language-selector">
+            <button class="lang-btn" onclick="changeLanguage('es', this)">ES</button>
+            <button class="lang-btn" onclick="changeLanguage('en', this)">EN</button>
+            <button class="lang-btn" onclick="changeLanguage('zh', this)">中文</button>
+        </div>
+        <div class="header">
+            <div class="logo"><img src="icon.png" alt="LIMOX"></div>
+            <h1 id="title">Política de Privacidad</h1>
+            <p class="updated" id="updated">Última actualización: 26 de octubre de 2026</p>
+        </div>
+        <div id="policy"></div>
+        <a class="back-link" id="back" href="index.html">← Volver a LIMOX</a>
+    </div>
+    <script>
+        const pages = {
+            es: {
+                title: "Política de Privacidad - LIMOX",
+                heading: "Política de Privacidad",
+                updated: "Última actualización: 26 de octubre de 2026",
+                back: "← Volver a LIMOX",
+                html: `
+                <div class="highlight"><strong>Resumen:</strong> LIMOX no tiene cuenta ni servidor. No recoge datos personales, no los vende y no pone publicidad. La clave y las apps elegidas se quedan en el iPhone.</div>
+                <h2>1. Introducción</h2>
+                <p>Esta Política de Privacidad describe cómo trata la información la aplicación LIMOX para iPhone («la App»). La usa un padre o una madre para limitar apps. Al usar la App, aceptas lo que se describe aquí.</p>
+                <h2>2. Información que tratamos</h2>
+                <p>La App no pide crear una cuenta, ni el nombre, el correo o el teléfono.</p>
+                <ul>
+                    <li><strong>Clave de 4 números.</strong> Se guarda en el llavero de iOS de ese iPhone, como un resumen protegido, no como los números en claro. No sale del iPhone y nosotros no la recibimos. Si se olvida, no hay forma de recuperarla.</li>
+                    <li><strong>Ajustes de la protección.</strong> El modo elegido, el tiempo al día, las apps de la caja y el idioma se guardan en el propio iPhone. No se envían a un servidor de LIMOX.</li>
+                    <li><strong>Control de pantalla de Apple.</strong> Para limitar apps, iOS pide el permiso de Tiempo de uso. Si se elige el móvil del niño, Apple puede pedir la contraseña de Apple del padre. Esa contraseña la pide y la comprueba Apple. LIMOX no la recibe ni la guarda. LIMOX tampoco crea, lee ni guarda la clave de Tiempo de uso: esa clave, si se pone, se crea en Ajustes.</li>
+                    <li><strong>Idioma.</strong> El idioma elegido se guarda en el iPhone para que la App y la pantalla de bloqueo lo usen.</li>
+                </ul>
+                <h2>3. Lo que la App no lee</h2>
+                <p>LIMOX no lee mensajes, fotos, contactos, ubicación, historial de Safari ni el contenido de otras apps. No supervisa el iPhone y no usa un perfil de gestión del dispositivo.</p>
+                <h2>4. Cómo se usa la información</h2>
+                <p>Lo que queda en el iPhone se usa solo para aplicar el límite que el padre ha elegido, para pedir la clave al quitarlo y para mostrar la App en el idioma elegido. No se usa para publicidad ni para rastrear a nadie en apps o webs de otras empresas.</p>
+                <h2>5. Cesión de datos</h2>
+                <p>No vendemos información personal. No la cedemos a terceros para sus propios fines, incluida la publicidad o la analítica. No hay un servidor de LIMOX que reciba esos datos.</p>
+                <p>Apple, al mostrar el permiso de Tiempo de uso o al pedir la contraseña de En Familia, trata los datos según sus propias condiciones. Esos datos no nos llegan.</p>
+                <h2>6. Conservación y eliminación</h2>
+                <p>La clave y la protección permanecen en el iPhone hasta que se quita la protección con la clave o se borra la App. Borrar la App elimina sus datos locales en el funcionamiento normal de iOS. En el móvil del niño, con su Apple ID de En Familia, Apple puede pedir la contraseña del padre antes de permitir borrar la App.</p>
+                <h2>7. Seguridad</h2>
+                <p>La clave se guarda en el llavero de iOS y solo en ese iPhone. Tras varios intentos fallidos, la App espera un minuto antes de aceptar otro. Ningún método de almacenamiento es completamente seguro, y no podemos garantizar una seguridad absoluta.</p>
+                <h2>8. Menores</h2>
+                <p>La App es una herramienta para un padre o una madre. No pide al niño una cuenta, un nombre ni un correo. No recogemos a sabiendas información personal de menores.</p>
+                <h2>9. Carácter independiente</h2>
+                <p>LIMOX es una app independiente. No está afiliada, respaldada ni conectada con Apple, salvo que usa el control de pantalla que iOS ofrece a las apps.</p>
+                <h2>10. Cambios de esta política</h2>
+                <p>Podemos actualizar esta Política de Privacidad. La versión nueva se publicará en esta página con la fecha revisada.</p>
+                <h2>11. Contacto</h2>
+                <p>Si tienes preguntas sobre esta Política de Privacidad o sobre LIMOX, escríbenos a <a href="mailto:info@520apps.com">info@520apps.com</a>.</p>`
+            },
+            en: {
+                title: "Privacy Policy - LIMOX",
+                heading: "Privacy Policy",
+                updated: "Last updated: October 26, 2026",
+                back: "← Back to LIMOX",
+                html: `
+                <div class="highlight"><strong>Summary:</strong> LIMOX has no account and no server. It does not collect personal information, it does not sell it, and it does not show ads. The code and the chosen apps stay on the iPhone.</div>
+                <h2>1. Introduction</h2>
+                <p>This Privacy Policy describes how the LIMOX application for iPhone (“the App”) handles information. A parent uses it to limit apps. By using the App, you agree to the practices described here.</p>
+                <h2>2. Information we process</h2>
+                <p>The App does not ask you to create an account, and it does not ask for a name, email address, or phone number.</p>
+                <ul>
+                    <li><strong>4-digit code.</strong> It is stored in the iOS Keychain on that iPhone, as a protected digest, not as the digits in the clear. It does not leave the iPhone, and we do not receive it. If it is forgotten, it cannot be recovered.</li>
+                    <li><strong>Protection settings.</strong> The chosen mode, the daily time, the apps in the box, and the language are stored on the iPhone. They are not sent to a LIMOX server.</li>
+                    <li><strong>Apple Screen Time.</strong> To limit apps, iOS asks for Screen Time permission. If the child’s phone is chosen, Apple may ask for the parent’s Apple ID password. Apple asks for that password and checks it. LIMOX does not receive or store it. LIMOX also does not create, read, or store a Screen Time passcode: if one is set, it is created in Settings.</li>
+                    <li><strong>Language.</strong> The chosen language is stored on the iPhone so the App and the block screen can use it.</li>
+                </ul>
+                <h2>3. What the App does not read</h2>
+                <p>LIMOX does not read messages, photos, contacts, location, Safari history, or the contents of other apps. It does not supervise the iPhone and it does not use a device-management profile.</p>
+                <h2>4. How information is used</h2>
+                <p>What stays on the iPhone is used only to apply the limit the parent chose, to ask for the code when turning it off, and to show the App in the chosen language. It is not used for advertising or to track anyone across other companies’ apps or websites.</p>
+                <h2>5. Data sharing</h2>
+                <p>We do not sell personal information. We do not disclose it to third parties for their own purposes, including advertising or analytics. There is no LIMOX server that receives this data.</p>
+                <p>When Apple shows the Screen Time permission, or asks for the Family Sharing password, Apple processes that data under its own terms. That data does not reach us.</p>
+                <h2>6. Retention and deletion</h2>
+                <p>The code and the protection remain on the iPhone until protection is turned off with the code or the App is deleted. Deleting the App removes its local data in the ordinary course of iOS. On the child’s phone, with the child’s Family Sharing Apple ID, Apple may ask for the parent’s password before the App can be deleted.</p>
+                <h2>7. Security</h2>
+                <p>The code is stored in the iOS Keychain and only on that iPhone. After several failed attempts, the App waits one minute before accepting another. No storage method is completely secure, and we cannot guarantee absolute security.</p>
+                <h2>8. Children</h2>
+                <p>The App is a tool for a parent. It does not ask a child for an account, a name, or an email address. We do not knowingly collect personal information from children.</p>
+                <h2>9. Independent status</h2>
+                <p>LIMOX is an independent app. It is not affiliated with, endorsed by, or connected to Apple, except that it uses the Screen Time controls iOS offers to apps.</p>
+                <h2>10. Changes to this policy</h2>
+                <p>We may update this Privacy Policy. The updated version will be posted on this page with a revised date.</p>
+                <h2>11. Contact</h2>
+                <p>If you have questions about this Privacy Policy or LIMOX, contact us at <a href="mailto:info@520apps.com">info@520apps.com</a>.</p>`
+            },
+            zh: {
+                title: "隐私政策 - LIMOX",
+                heading: "隐私政策",
+                updated: "最近更新：2026年10月26日",
+                back: "← 返回 LIMOX",
+                html: `
+                <div class="highlight"><strong>摘要：</strong> LIMOX 没有账户，也没有服务器。我们不收集个人信息，不出售，也不投放广告。密码和选定的 App 留在 iPhone 上。</div>
+                <h2>1. 引言</h2>
+                <p>本隐私政策说明 iPhone 应用 LIMOX（“本应用”）如何处理信息。家长用它来限制 App。使用本应用即表示你同意这里描述的做法。</p>
+                <h2>2. 我们处理的信息</h2>
+                <p>本应用不要求创建账户，也不索取姓名、电子邮箱或电话号码。</p>
+                <ul>
+                    <li><strong>4 位密码。</strong> 它保存在这台 iPhone 的 iOS 钥匙串中，保存的是受保护的摘要，不是明文数字。它不会离开这台 iPhone，我们也不会收到它。如果忘记，无法找回。</li>
+                    <li><strong>保护设置。</strong> 所选模式、每天时间、盒子里的 App 和语言都保存在 iPhone 上。不会发送到 LIMOX 的服务器。</li>
+                    <li><strong>Apple 屏幕使用时间。</strong> 为了限制 App，iOS 会请求屏幕使用时间权限。如果选择孩子的手机，Apple 可能会要求家长的 Apple ID 密码。这个密码由 Apple 询问并验证。LIMOX 不会收到或保存它。LIMOX 也不会创建、读取或保存屏幕使用时间密码：如果设置了，那是在“设置”里创建的。</li>
+                    <li><strong>语言。</strong> 所选语言保存在 iPhone 上，供本应用和锁定画面使用。</li>
+                </ul>
+                <h2>3. 本应用不读取的内容</h2>
+                <p>LIMOX 不读取信息、照片、通讯录、位置、Safari 历史或其他 App 的内容。它不监督这台 iPhone，也不使用设备管理描述文件。</p>
+                <h2>4. 信息的用途</h2>
+                <p>留在 iPhone 上的内容只用于执行家长选择的限制、在关闭时要求密码，以及按所选语言显示本应用。不会用于广告，也不会用于在其他公司的应用或网站上跟踪任何人。</p>
+                <h2>5. 数据共享</h2>
+                <p>我们不出售个人信息。我们不会为第三方自身的目的（包括广告或分析）而披露这些信息。没有 LIMOX 服务器会收到这些数据。</p>
+                <p>当 Apple 显示屏幕使用时间权限，或要求“家人共享”密码时，Apple 按其自己的条款处理这些数据。这些数据不会到达我们。</p>
+                <h2>6. 保存与删除</h2>
+                <p>密码和保护会留在 iPhone 上，直到用密码关闭保护或删除本应用。删除本应用后，iOS 会按通常方式删除其本地数据。在孩子的手机上，如果使用的是“家人共享”中孩子的 Apple ID，Apple 可能会在允许删除本应用之前要求家长密码。</p>
+                <h2>7. 安全</h2>
+                <p>密码保存在 iOS 钥匙串中，并且只在这台 iPhone 上。多次输入错误后，本应用会等待一分钟才接受下一次尝试。任何存储方式都不是绝对安全的，我们不能保证绝对安全。</p>
+                <h2>8. 儿童</h2>
+                <p>本应用是给家长使用的工具。它不向孩子索取账户、姓名或电子邮箱。我们不会故意收集儿童的个人信息。</p>
+                <h2>9. 独立地位</h2>
+                <p>LIMOX 是独立应用。除了使用 iOS 提供给 App 的屏幕使用时间控制外，与 Apple 没有隶属、认可或关联关系。</p>
+                <h2>10. 本政策的变更</h2>
+                <p>我们可能会更新本隐私政策。更新版本会发布在本页，并注明修订日期。</p>
+                <h2>11. 联系</h2>
+                <p>如果对本隐私政策或 LIMOX 有疑问，请联系 <a href="mailto:info@520apps.com">info@520apps.com</a>。</p>`
+            }
+        };
+
+        function detectLanguage() {
+            const saved = localStorage.getItem('limox-language');
+            if (saved && pages[saved]) return saved;
+            const browserLang = navigator.language || navigator.userLanguage || 'es';
+            if (browserLang.startsWith('en')) return 'en';
+            if (browserLang.startsWith('zh')) return 'zh';
+            return 'es';
+        }
+
+        function changeLanguage(lang, button) {
+            const page = pages[lang];
+            if (!page) return;
+            document.title = page.title;
+            document.getElementById('title').textContent = page.heading;
+            document.getElementById('updated').textContent = page.updated;
+            document.getElementById('policy').innerHTML = page.html;
+            document.getElementById('back').textContent = page.back;
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            if (button) button.classList.add('active');
+            localStorage.setItem('limox-language', lang);
+            document.documentElement.lang = lang === 'zh' ? 'zh-Hans' : lang;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const lang = detectLanguage();
+            const buttons = document.querySelectorAll('.lang-btn');
+            let active = buttons[0];
+            buttons.forEach(btn => {
+                const label = btn.textContent.trim();
+                if ((lang === 'zh' && label === '中文') || (lang === 'es' && label === 'ES') || (lang === 'en' && label === 'EN')) active = btn;
+            });
+            changeLanguage(lang, active);
+        });
+    </script>
+</body>
+</html>

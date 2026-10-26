@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIMOX - Control del móvil para padres</title>
+    <meta name="description" content="LIMOX limita las apps del iPhone. El padre elige las apps permitidas, un tiempo al día, o las dos cosas. La protección sigue hasta quitarla con una clave de 4 números.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(160deg, #ececef 0%, #f3e7ee 52%, #e7e8ec 100%);
+            min-height: 100vh;
+        }
+
+        .container { max-width: 820px; margin: 0 auto; padding: 2rem; }
+
+        .card {
+            background: white;
+            border-radius: 22px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 20px 40px rgba(80, 24, 48, 0.12);
+            text-align: center;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 10px 24px rgba(80, 24, 48, 0.16);
+        }
+        .logo img { width: 100%; height: 100%; display: block; }
+
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3rem);
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #c41268 0%, #e01478 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle { font-size: 1.15rem; color: #666; margin-bottom: 2rem; }
+
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.92);
+            border: 2px solid #e01478;
+            color: #c41268;
+            padding: 0.45rem 0.9rem;
+            border-radius: 999px;
+            margin: 0 0.2rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.25s ease;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: #e01478;
+            color: white;
+        }
+
+        .description {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            color: #444;
+        }
+
+        .description p + p { margin-top: 0.85rem; }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .feature {
+            padding: 1.25rem;
+            background: #faf7f8;
+            border-radius: 16px;
+            border-left: 4px solid #e01478;
+        }
+
+        .feature h3 { color: #c41268; margin-bottom: 0.65rem; font-size: 1rem; }
+
+        .actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 0.95rem 1.75rem;
+            border-radius: 999px;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(196, 18, 104, 0.22); }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #c41268 0%, #e01478 100%);
+            color: white;
+        }
+
+        .btn-secondary { background: #6c757d; color: white; }
+
+        .footer {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+            color: #777;
+            font-size: 0.92rem;
+        }
+
+        .footer a { color: #c41268; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        .footer-contact { margin-top: 0.35rem; }
+
+        .legal {
+            margin-top: 1.25rem;
+            font-size: 0.85rem;
+            color: #777;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <button class="lang-btn" onclick="changeLanguage('es', this)">ES</button>
+        <button class="lang-btn" onclick="changeLanguage('en', this)">EN</button>
+        <button class="lang-btn" onclick="changeLanguage('zh', this)">中文</button>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="logo">
+                <img src="icon.png" alt="LIMOX">
+            </div>
+            <h1 id="page-title">LIMOX</h1>
+            <p class="subtitle" id="subtitle">Control del móvil para padres</p>
+
+            <div class="description">
+                <p id="description1"><strong>LIMOX</strong> es una app para iPhone con la que un padre o una madre limita las apps. Se elige qué apps se pueden usar, un tiempo al día, o las dos cosas. La protección sigue aunque se apague el iPhone, hasta quitarla con una clave de 4 números.</p>
+                <p id="description2">No supervisa el teléfono y no lee mensajes ni fotos. Usa el control de pantalla de Apple. Teléfono, FaceTime, Mensajes, Mapas y Ajustes siguen disponibles. La guía de la app enseña a poner otra clave en Tiempo de uso.</p>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <h3 id="feature1-title">1. Solo las permitidas</h3>
+                    <p id="feature1-desc">Se bloquea todo menos las apps que el padre mete en la caja.</p>
+                </div>
+                <div class="feature">
+                    <h3 id="feature2-title">2. Tiempo para todas</h3>
+                    <p id="feature2-desc">Las apps se pueden usar hasta el tiempo del día. A medianoche el tiempo vuelve a empezar. El modo no se quita solo.</p>
+                </div>
+                <div class="feature">
+                    <h3 id="feature3-title">3. Permitidas con tiempo</h3>
+                    <p id="feature3-desc">Solo la caja, y además con un tiempo al día.</p>
+                </div>
+                <div class="feature">
+                    <h3 id="feature4-title">Clave de 4 números</h3>
+                    <p id="feature4-desc">Hace falta para quitar la protección. Se guarda en el llavero de ese iPhone y no sale de ahí. Si se olvida, no se puede recuperar.</p>
+                </div>
+                <div class="feature">
+                    <h3 id="feature5-title">Móvil del niño</h3>
+                    <p id="feature5-desc">Si el Apple ID es el del niño, dentro de En Familia, Apple pide la contraseña del padre. Después, borrar LIMOX también pide esa contraseña. LIMOX no la recibe ni la guarda.</p>
+                </div>
+            </div>
+
+            <div class="actions">
+                <a href="#" class="btn btn-primary" id="download-btn">Descargar en App Store</a>
+                <a href="privacy.html" class="btn btn-secondary" id="privacy-btn">Política de Privacidad</a>
+            </div>
+
+            <p class="legal" id="legal">LIMOX es una app independiente. No está afiliada, respaldada ni conectada con Apple, salvo que usa el control de pantalla que iOS ofrece a las apps.</p>
+
+            <div class="footer">
+                <p id="footer1">© 2026 LIMOX. Todos los derechos reservados.</p>
+                <p class="footer-contact"><span id="footer-contact-label">Contacto:</span> <a href="mailto:info@520apps.com">info@520apps.com</a></p>
+                <p><a href="privacy.html" id="footer-privacy">Política de Privacidad</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            es: {
+                title: "LIMOX - Control del móvil para padres",
+                subtitle: "Control del móvil para padres",
+                description1: "<strong>LIMOX</strong> es una app para iPhone con la que un padre o una madre limita las apps. Se elige qué apps se pueden usar, un tiempo al día, o las dos cosas. La protección sigue aunque se apague el iPhone, hasta quitarla con una clave de 4 números.",
+                description2: "No supervisa el teléfono y no lee mensajes ni fotos. Usa el control de pantalla de Apple. Teléfono, FaceTime, Mensajes, Mapas y Ajustes siguen disponibles. La guía de la app enseña a poner otra clave en Tiempo de uso.",
+                feature1Title: "1. Solo las permitidas",
+                feature1Desc: "Se bloquea todo menos las apps que el padre mete en la caja.",
+                feature2Title: "2. Tiempo para todas",
+                feature2Desc: "Las apps se pueden usar hasta el tiempo del día. A medianoche el tiempo vuelve a empezar. El modo no se quita solo.",
+                feature3Title: "3. Permitidas con tiempo",
+                feature3Desc: "Solo la caja, y además con un tiempo al día.",
+                feature4Title: "Clave de 4 números",
+                feature4Desc: "Hace falta para quitar la protección. Se guarda en el llavero de ese iPhone y no sale de ahí. Si se olvida, no se puede recuperar.",
+                feature5Title: "Móvil del niño",
+                feature5Desc: "Si el Apple ID es el del niño, dentro de En Familia, Apple pide la contraseña del padre. Después, borrar LIMOX también pide esa contraseña. LIMOX no la recibe ni la guarda.",
+                downloadBtn: "Descargar en App Store",
+                privacyBtn: "Política de Privacidad",
+                legal: "LIMOX es una app independiente. No está afiliada, respaldada ni conectada con Apple, salvo que usa el control de pantalla que iOS ofrece a las apps.",
+                footer1: "© 2026 LIMOX. Todos los derechos reservados.",
+                footerContact: "Contacto:",
+                footerPrivacy: "Política de Privacidad"
+            },
+            en: {
+                title: "LIMOX - Parental controls for iPhone",
+                subtitle: "Parental controls for iPhone",
+                description1: "<strong>LIMOX</strong> is an iPhone app a parent uses to limit apps. Choose which apps can be used, a daily time limit, or both. Protection stays on after the iPhone is turned off, until it is turned off with a 4-digit code.",
+                description2: "It does not supervise the phone and it does not read messages or photos. It uses Apple’s Screen Time controls. Phone, FaceTime, Messages, Maps, and Settings stay available. The in-app guide shows how to set a separate Screen Time code.",
+                feature1Title: "1. Allowed apps only",
+                feature1Desc: "Everything is blocked except the apps the parent puts in the box.",
+                feature2Title: "2. Time for every app",
+                feature2Desc: "Apps can be used until the day’s time runs out. At midnight the time starts again. The mode does not turn itself off.",
+                feature3Title: "3. Allowed apps with time",
+                feature3Desc: "Only the box, and also a daily time limit.",
+                feature4Title: "4-digit code",
+                feature4Desc: "Required to turn protection off. It stays in that iPhone’s Keychain and does not leave the phone. If it is forgotten, it cannot be recovered.",
+                feature5Title: "The child’s phone",
+                feature5Desc: "If the Apple ID is the child’s, inside Family Sharing, Apple asks for the parent’s password. After that, deleting LIMOX also asks for that password. LIMOX does not receive or store it.",
+                downloadBtn: "Download on the App Store",
+                privacyBtn: "Privacy Policy",
+                legal: "LIMOX is an independent app. It is not affiliated with, endorsed by, or connected to Apple, except that it uses the Screen Time controls iOS offers to apps.",
+                footer1: "© 2026 LIMOX. All rights reserved.",
+                footerContact: "Contact:",
+                footerPrivacy: "Privacy Policy"
+            },
+            zh: {
+                title: "LIMOX - 给家长的 iPhone 控制",
+                subtitle: "给家长的 iPhone 控制",
+                description1: "<strong>LIMOX</strong> 是一款给家长用来限制 App 的 iPhone 应用。可以选择可以使用哪些 App、每天可用多久，或两者一起。即使 iPhone 关机，保护也会保持，直到用 4 位密码关闭。",
+                description2: "它不监督这台手机，也不读取信息或照片。它使用 Apple 的屏幕使用时间。电话、FaceTime、信息、地图和设置仍然可用。应用里的指南会说明如何另外设置屏幕使用时间密码。",
+                feature1Title: "1. 只允许这些",
+                feature1Desc: "除了家长放进盒子里的 App，其余全部锁住。",
+                feature2Title: "2. 全部限时",
+                feature2Desc: "App 可以使用，直到当天的时间用完。午夜后时间重新开始。模式不会自己关闭。",
+                feature3Title: "3. 允许的也限时",
+                feature3Desc: "只有盒子里的 App，并且每天有时间上限。",
+                feature4Title: "4 位密码",
+                feature4Desc: "关闭保护时需要它。它保存在这台 iPhone 的钥匙串里，不会离开手机。如果忘记，无法找回。",
+                feature5Title: "孩子的手机",
+                feature5Desc: "如果 Apple ID 是“家人共享”里孩子的账号，Apple 会要求家长密码。之后，删除 LIMOX 也要这个密码。LIMOX 不会收到或保存它。",
+                downloadBtn: "在 App Store 下载",
+                privacyBtn: "隐私政策",
+                legal: "LIMOX 是独立应用。除了使用 iOS 提供给 App 的屏幕使用时间控制外，与 Apple 没有隶属、认可或关联关系。",
+                footer1: "© 2026 LIMOX. 版权所有。",
+                footerContact: "联系：",
+                footerPrivacy: "隐私政策"
+            }
+        };
+
+        function detectLanguage() {
+            const saved = localStorage.getItem('limox-language');
+            if (saved && translations[saved]) return saved;
+            const browserLang = navigator.language || navigator.userLanguage || 'es';
+            if (browserLang.startsWith('en')) return 'en';
+            if (browserLang.startsWith('zh')) return 'zh';
+            return 'es';
+        }
+
+        function changeLanguage(lang, button) {
+            if (!translations[lang]) return;
+            const t = translations[lang];
+            document.title = t.title;
+            document.getElementById('page-title').textContent = 'LIMOX';
+            document.getElementById('subtitle').textContent = t.subtitle;
+            document.getElementById('description1').innerHTML = t.description1;
+            document.getElementById('description2').textContent = t.description2;
+            document.getElementById('feature1-title').textContent = t.feature1Title;
+            document.getElementById('feature1-desc').textContent = t.feature1Desc;
+            document.getElementById('feature2-title').textContent = t.feature2Title;
+            document.getElementById('feature2-desc').textContent = t.feature2Desc;
+            document.getElementById('feature3-title').textContent = t.feature3Title;
+            document.getElementById('feature3-desc').textContent = t.feature3Desc;
+            document.getElementById('feature4-title').textContent = t.feature4Title;
+            document.getElementById('feature4-desc').textContent = t.feature4Desc;
+            document.getElementById('feature5-title').textContent = t.feature5Title;
+            document.getElementById('feature5-desc').textContent = t.feature5Desc;
+            document.getElementById('download-btn').textContent = t.downloadBtn;
+            document.getElementById('privacy-btn').textContent = t.privacyBtn;
+            document.getElementById('legal').textContent = t.legal;
+            document.getElementById('footer1').textContent = t.footer1;
+            document.getElementById('footer-contact-label').textContent = t.footerContact;
+            document.getElementById('footer-privacy').textContent = t.footerPrivacy;
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            if (button) button.classList.add('active');
+            localStorage.setItem('limox-language', lang);
+            document.documentElement.lang = lang === 'zh' ? 'zh-Hans' : lang;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const lang = detectLanguage();
+            const buttons = document.querySelectorAll('.lang-btn');
+            let active = buttons[0];
+            buttons.forEach(btn => {
+                const label = btn.textContent.trim();
+                if ((lang === 'zh' && label === '中文') || (lang === 'es' && label === 'ES') || (lang === 'en' && label === 'EN')) {
+                    active = btn;
+                }
+            });
+            changeLanguage(lang, active);
+        });
+    </script>
+</body>
+</html>
